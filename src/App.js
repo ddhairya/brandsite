@@ -1,16 +1,16 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import {Home} from './Home';
-import {Location} from './Location'
-import {Story} from './Story';
-import {Feedback} from './Feedback'
-import {Faq} from './Faq'
-import {Menu} from './Menu'
-import {NoMatch} from './NoMatch'
-import {Ticket} from './Ticket'
-import {Login} from './Authenticate'
-import {Navigationbar} from './components/NavigationBar'
+import { Home } from './Home';
+import { Location } from './Location'
+import { Story } from './Story';
+import { Feedback } from './Feedback'
+import { Faq } from './Faq'
+import { Menu } from './Menu'
+import { NoMatch } from './NoMatch'
+import { Ticket } from './Ticket'
+import { Login } from './Authenticate'
+import { Navigationbar } from './components/NavigationBar'
 import { Order } from './Oder';
 import GA from './components/GoogleAnalytics'
 import { TicketData } from './TicketData';
@@ -28,24 +28,24 @@ function App() {
   return (
     <React.Fragment>
       <Router>
-        <Navigationbar/>
-        { 
-          GA.init() && <GA.RouteTracker /> 
+        <Navigationbar />
+        {
+          GA.init() && <GA.RouteTracker />
         }
-        <Switch>            
-          <Route exact path = "/" component = {Home}/>
-          <Route exact path = "/order" component = {Order}/>
-          <Route path = "/location" component = {Location} />
-          <Route path = "/story" component = {Story}/>
-          <Route path = "/feedback" component = {Feedback} />
-          <Route path = "/faq" component = {Faq} />
-          <Route path = "/menu" component = {Menu} />
-          <Route path = "/ticket" component = {Ticket} />
-          <Route path = "/authenticate" component = {Login} />
-          <Route path = "/ticketdata" component = {TicketData} />
-          <Route path = "/ticketdetail" component = {TicketDetail} />
-          <Route path = "/thankyou" component = {ThankYou} />            
-          <Route component = {NoMatch}/>
+        <Switch>
+          <Route exact path="/brandsite/" component={Home} />
+          <Route exact path="/brandsite/order" component={Order} />
+          <Route path="/brandsite/location" component={Location} />
+          <Route path="/brandsite/story" component={Story} />
+          <Route path="/brandsite/feedback" component={Feedback} />
+          <Route path="/brandsite/faq" component={Faq} />
+          <Route path="/brandsite/menu" component={Menu} />
+          <Route path="/brandsite/ticket" component={Ticket} />
+          <Route path="/brandsite/authenticate" component={Login} />
+          <Route path="/brandsite/ticketdata" component={TicketData} />
+          <Route path="/brandsite/ticketdetail" component={TicketDetail} />
+          <Route path="/brandsite/thankyou" component={ThankYou} />
+          <Route component={NoMatch} />
         </Switch>
       </Router>
     </React.Fragment>
