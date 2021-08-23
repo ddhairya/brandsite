@@ -103,7 +103,7 @@ const NavLink = props => {
 export const Navigationbar = () => (
     <Styles>
         <Navbar collapseOnSelect fixed='top' expand="lg">
-            <Navbar.Brand href="/"><img src={brandlogo} alt="Bareburger" ></img></Navbar.Brand>
+            <Navbar.Brand href="/brandsite/"><img src={brandlogo} alt="Bareburger" ></img></Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
@@ -134,11 +134,7 @@ export const Navigationbar = () => (
                         title="FAQ"
                         eventKey="4"
                     />
-                    <NavLink
-                        href="/brandsite/menu"
-                        title="Our Menu"
-                        eventKey="5"
-                    />
+
 
 
 
