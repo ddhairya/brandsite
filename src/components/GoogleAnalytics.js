@@ -5,14 +5,13 @@ import ReactGA from 'react-ga';
 import { Route } from 'react-router-dom';
 
 class GoogleAnalytics extends Component {
-    componentDidMount () {
+    componentDidMount() {
         this.logPageChange(
             this.props.location.pathname,
             this.props.location.search
         );
     }
-
-    componentDidUpdate ({ location: prevLocation }) {
+    componentDidUpdate({ location: prevLocation }) {
         const { location: { pathname, search } } = this.props;
         const isDifferentPathname = pathname !== prevLocation.pathname;
         const isDifferentSearch = search !== prevLocation.search;
@@ -21,8 +20,7 @@ class GoogleAnalytics extends Component {
             this.logPageChange(pathname, search);
         }
     }
-
-    logPageChange (pathname, search = '') {
+    logPageChange(pathname, search = '') {
         const page = pathname + search;
         const { location } = window;
         ReactGA.set({
@@ -32,8 +30,7 @@ class GoogleAnalytics extends Component {
         });
         ReactGA.pageview(page);
     }
-
-    render () {
+    render() {
         return null;
     }
 }
@@ -53,7 +50,6 @@ const init = (options = {}) => {
     if (isGAEnabled) {
         ReactGA.initialize("UA-169233297-1");
     }
-
     return isGAEnabled;
 };
 

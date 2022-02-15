@@ -3,11 +3,9 @@
 //header("Access-Control-Allow-Origin: https://bareburger.ae/feedback");
 header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Headers: Content-Type');
-
 include("connection_db.php");
 require("phpmail/PHPMailerAutoload.php");
 date_default_timezone_set("Asia/Dubai");
-
 $rest_json = file_get_contents("php://input");
 //echo $rest_json;
 $_POST = json_decode($rest_json, true);
@@ -40,22 +38,14 @@ $rb= $_POST['rb'];  //How did you hear about us?
 $comment= $_POST['comment'];
 $checkbx= $_POST['checkbx'];
 if(!$checkbx){$checkbx = 0;}
-//echo $checkbx;
-//echo $no;
 $statisfaction = "Satisfied";
 if($no>=3){ $statisfaction = "Not Satisfied"; }
-//echo $statisfaction;
 
-
-//$location_query="SELECT `l_email`,`l_name` from `location` WHERE `l_code`='".$loc."'";
-//echo $mail_select_query;
-//$ex_mail_select_query=mysqli_query($con,"SELECT `l_email`,`l_name` from `location` WHERE `l_code`='".$loc."'");
 $loc_detail=mysqli_fetch_row(mysqli_query($con,"SELECT `l_email`,`l_name` from `location` WHERE `l_code`='".$loc."'"));
 $mailto=$loc_detail[0];
 //echo $mailto;
 $loc=$loc_detail[1];
 echo $loc;
-
 
 $insert_query= "INSERT INTO `test_survey`( `loc`, `fname`, `mob`, `email`, `q1`, `q2`, `q3`, `q4`, `q5`, `comment`, `allow_inbox`, `satisfaction`, `dine_time`) 
 VALUES ('".$loc."','".$fname."','".$mob."','".$email."','".$q1."','".$q2."','".$q3."','".$q4."','".$rb."','".$comment."','".$checkbx."','".$statisfaction."','".$time."')";
@@ -63,10 +53,7 @@ VALUES ('".$loc."','".$fname."','".$mob."','".$email."','".$q1."','".$q2."','".$
 //$ex_insert_query=mysqli_query($con,$insert_query);
 http_response_code(200);
 
-
-
 $id="dhairya@alahliagroup.com";
-
 
 $message="<html><body><table>";
 $message .="<tr> <td colspam='2'> Point are out of 50 </td></tr>";
@@ -100,13 +87,6 @@ $mail->Port = 465;                                    // TCP port to connect to
 $mail->isHTML(true);                                  // Set email format to HTML
 $mail->setFrom('it@bareburger.ae', 'Non-reply-mail');
 $mail->addAddress($id);
-//$mail->addAddress($mailto);
-//$mail->addAddress($id);
-//$mail->addCC($id);
-//$mail->addCC('fabrice@alahliagroup.com');
-// 	if($statisfaction == "Not Satisfied"){
-// 	    $mail->addCC('fabrice@alahliagroup.com');
-// 	}
 $mail->Subject = $statisfaction." Customer" ;
 $mail->Body    = $message;
 $mail->AltBody = $messagealt;
@@ -118,7 +98,6 @@ if(!$mail->send()) {
     echo " - Thank you for the feedback " . date("h:i:sa");
     header("Location: https://bareburger.ae");
 }
-
 
 if ($_POST){
     //@important: Please change this before using

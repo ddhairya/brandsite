@@ -7,8 +7,6 @@ const Styles = styled.div`
   padding: 1rem;
   table {
     border-spacing: 0;
-    
-
     tr {
       :last-child {
         td {
@@ -16,7 +14,6 @@ const Styles = styled.div`
         }
       }
     }
-
     th,
     td {
       margin: 0;
@@ -29,16 +26,15 @@ const Styles = styled.div`
       }
     }
   }
-
   thead {
     color: #42b549;
   }
-
   .pagination {
     padding: 0.5rem;
-  }
-`
-function GlobalFilter({ preGlobalFilteredRows,  globalFilter,  setGlobalFilter,}) {
+  }`;
+
+
+function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter, }) {
   const count = preGlobalFilteredRows.length
   const [value, setValue] = React.useState(globalFilter)
   const onChange = useAsyncDebounce(value => {
@@ -48,10 +44,10 @@ function GlobalFilter({ preGlobalFilteredRows,  globalFilter,  setGlobalFilter,}
   return (
     <span>
       Search / Filter :{' '}
-      <input value={value || ""}  onChange={e => {
-          setValue(e.target.value);
-          onChange(e.target.value);
-        }}
+      <input value={value || ""} onChange={e => {
+        setValue(e.target.value);
+        onChange(e.target.value);
+      }}
         placeholder={`Type to look into ${count} records...`}
         style={{ fontSize: '1.1rem', border: '0', width: '230px', }}
       />
@@ -59,21 +55,20 @@ function GlobalFilter({ preGlobalFilteredRows,  globalFilter,  setGlobalFilter,}
   )
 }
 
-const IndeterminateCheckbox = React.forwardRef(
-  ({ indeterminate, ...rest }, ref) => {
-    const defaultRef = React.useRef()
-    const resolvedRef = ref || defaultRef
+const IndeterminateCheckbox = React.forwardRef(({ indeterminate, ...rest }, ref) => {
+  const defaultRef = React.useRef()
+  const resolvedRef = ref || defaultRef
 
-    React.useEffect(() => {
-      resolvedRef.current.indeterminate = indeterminate
-    }, [resolvedRef, indeterminate])
+  React.useEffect(() => {
+    resolvedRef.current.indeterminate = indeterminate
+  }, [resolvedRef, indeterminate])
 
-    return (
-      <>
-        <input type="checkbox" ref={resolvedRef} {...rest} />
-      </>
-    )
-  }
+  return (
+    <>
+      <input type="checkbox" ref={resolvedRef} {...rest} />
+    </>
+  )
+}
 )
 
 function TableCols({ columns, data }) {
@@ -82,7 +77,6 @@ function TableCols({ columns, data }) {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    //rows,
     prepareRow,
     page,
     canPreviousPage,
@@ -90,8 +84,6 @@ function TableCols({ columns, data }) {
     pageOptions,
     pageCount,
     gotoPage,
-    //nextPage,
-    //previousPage,
     setPageSize,
     selectedFlatRows,
     visibleColumns,
@@ -99,36 +91,36 @@ function TableCols({ columns, data }) {
     setGlobalFilter,
     state,
     state: { pageIndex, pageSize },
-  } = useTable (
-        { columns, data, },
-        useGlobalFilter,
-        useSortBy,
-        usePagination,
-        useRowSelect,
-        hooks => {
-          hooks.visibleColumns.push(columns => [
-            // Let's make a column for selection
-            {
-              id: 'selection',
-              // The header can use the table's getToggleAllRowsSelectedProps method
-              // to render a checkbox
-              Header: ({ getToggleAllPageRowsSelectedProps }) => (
-                <div>
-                  {/* <IndeterminateCheckbox {...getToggleAllPageRowsSelectedProps()} /> */}
-                </div>
-              ),
-              // The cell can use the individual row's getToggleRowSelectedProps method
-              // to the render a checkbox
-              Cell: ({ row }) => (
-                <div>
-                  <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
-                </div>
-              ),
-            },
-            ...columns,
-          ])
-        }
-      )
+  } = useTable(
+    { columns, data, },
+    useGlobalFilter,
+    useSortBy,
+    usePagination,
+    useRowSelect,
+    hooks => {
+      hooks.visibleColumns.push(columns => [
+        // Let's make a column for selection
+        {
+          id: 'selection',
+          // The header can use the table's getToggleAllRowsSelectedProps method
+          // to render a checkbox
+          Header: ({ getToggleAllPageRowsSelectedProps }) => (
+            <div>
+              {/* <IndeterminateCheckbox {...getToggleAllPageRowsSelectedProps()} /> */}
+            </div>
+          ),
+          // The cell can use the individual row's getToggleRowSelectedProps method
+          // to the render a checkbox
+          Cell: ({ row }) => (
+            <div>
+              <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+            </div>
+          ),
+        },
+        ...columns,
+      ])
+    }
+  )
 
   // Render the UI for your table
 

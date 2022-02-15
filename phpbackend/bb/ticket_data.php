@@ -13,9 +13,6 @@ include("connection_db.php");
 require("vendor/autoload.php");
 date_default_timezone_set("Asia/Dubai");
 
-
-//echo "This is data rows";
-
 $result = mysqli_query(
     $con,
     "SELECT * FROM `test_ticket` WHERE `t_status` = 'Open' "
@@ -31,8 +28,5 @@ if(mysqli_num_rows($result) > 0){
     mysqli_close($con);
 }
 
-
-// $json = mysqli_fetch_all($result, MYSQLI_ASSOC);
-// echo json_encode($json);
 
 ?>

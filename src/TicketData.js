@@ -2,10 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Form from 'react-bootstrap/Form'
-import {Helmet} from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import UserProfile from './components/UserProfile'
-//import Table from 'react-bootstrap/Table'
-import {TableRows} from './components/TableRows'
+import { TableRows } from './components/TableRows'
 import { Redirect } from 'react-router-dom'
 
 const Styles = styled.div`
@@ -52,54 +51,40 @@ const Styles = styled.div`
         border-spacing: 0;
         border: 1px solid black;
         width: 100%;
-      }
-`;
+    }`;
 
 export class TicketData extends React.Component {
-    render(){
-        return(        
-            <Styles>           
+    render() {
+        return (
+            <Styles>
                 <Helmet>
-                        
-                        <title>Ticket</title>
-                        <meta 
-                            name="description" 
-                            content="We would love to hear from you. Tell us about the latest vegan burger menu   "
-                        />
-                        <meta 
-                            name="author" 
-                            content="Dhairya DOshi"
-                        />
-                        <meta
-                            name="keywords"
-                            content="Organic, Burger, UAE, Bareburger, order online, feedback"
-                        />
-                </Helmet>    
+                    <title>Ticket</title>
+                    <meta
+                        name="description"
+                        content="We would love to hear from you. Tell us about the latest vegan burger menu   "
+                    />
+                    <meta
+                        name="author"
+                        content="Dhairya DOshi"
+                    />
+                    <meta
+                        name="keywords"
+                        content="Organic, Burger, UAE, Bareburger, order online, feedback"
+                    />
+                </Helmet>
                 <Jumbotron>
                     <h1 className="display-3">Maintenance Request Data</h1>
-                    <hr className="line"/>                
-                    <Form className = 'feed'>  
-                        {   
-                            UserProfile.getSession() && 
+                    <hr className="line" />
+                    <Form className='feed'>
+                        {
+                            UserProfile.getSession() &&
                             <>
-                                {/*<Table striped bordered hover>
-                                     <thead>
-                                        <tr>
-                                        <th>ID</th>
-                                        <th>Locatoin</th>
-                                        <th>Equipment</th>
-                                        <th>Date</th>
-                                        <th>Priority</th>
-                                        <th>Status</th>                                
-                                        </tr>
-                                    </thead> */}
-                                    <TableRows />
-                                {/* </Table> */}
+                                <TableRows />
                             </>
                         }
                         {
-                            !UserProfile.getSession() && <Redirect to="./authenticate" />    
-                        } 
+                            !UserProfile.getSession() && <Redirect to="./authenticate" />
+                        }
                     </Form>
                 </Jumbotron>
             </Styles>

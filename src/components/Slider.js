@@ -1,13 +1,8 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-//import Image from 'react-bootstrap/Image'
 import styled from 'styled-components'
 import b1 from '../assets/images/b1.jpg'
-//import b2 from '../assets/images/b2.jpg'
 import b3 from '../assets/images/b3.jpg'
-
-
-
 
 // carousel-inner img is used for the image view 100 vh will give 100% view point based on the device.
 // carousel-inner is the container for the slider
@@ -21,8 +16,7 @@ const Styles = styled.div`
          height: 100vh; 
          background-size: cover;
          background-position: center;
-    }    
-    
+    }        
     .carousel-caption {        
         @media(min-height: 300px) and (max-height: 700px){
             padding-bottom:20vh
@@ -34,14 +28,12 @@ const Styles = styled.div`
             padding: 0vh    
         }
     }
-
     .carousel-indicators {
         padding-bottom: 10vh;
         @media(max-height:290px){
             padding: 0vh            
         }
     }
-
     .orderbtn{
         
         margin: 3rem;        
@@ -74,15 +66,13 @@ const Styles = styled.div`
             margin: 4rem;
         }
     }
-
     .Oldmenubtn{
         float:left;
         margin: 2rem;
         @media (max-height: 1400px) and (min-height: 360px) {                
             float: none;
         }
-    }
-    
+    }    
     .btn-primary{
         background-color: transparent;
         border-color: black;
@@ -100,52 +90,13 @@ const Styles = styled.div`
         @media(min-width:1024px){
             font-size: 2rem;
         }
-    }
-
-
-
-`;
-/*
-const test_Styles = styled.div`
-
-    .carousel-inner  {
-            
-        max-height: 100vh !important;
-        @media (min-width: 576px) {            
-            max-height: 100vh !important;          
-       }
-    }
-
-    .carousel-inner img{
-        
-        max-height: 100vh !important;
-        @media (min-width: 576px) {
-            
-            max-height: 100vh !important;         
-       }
-        
-    }
-
-    .carousel-inner img{
-        width: 100%;
-        height: 100vh;
-    }
-    .carousel-caption {
-        position: absoulte;
-        top:50%;
-    }
-`;
-*/
+    }`;
 
 const SlideImage = props => {
     const simg = props.img
-    //const salt = props.alt
     //console.log(simg)
-    return(
-        <div className="SliderImage" style={{backgroundImage:`url(${simg})`}}>
-                
-        </div>     
-        
+    return (
+        <div className="SliderImage" style={{ backgroundImage: `url(${simg})` }} />
     )
 }
 
@@ -155,50 +106,34 @@ const ImageCaption = () => (
         <div className='btn ' >
             <div> &nbsp; </div>
             <div className=' orderbtn ' >
-            <a href="https://order.radyes.co/bareburger">
-                <button className="btn btn-primary">
-                    Order Now
-                </button>
-            </a>
-
+                <a href="https://order.radyes.co/bareburger">
+                    <button className="btn btn-primary">
+                        Order Now
+                    </button>
+                </a>
             </div>
             <div className=' menubtn '>
-            <a href="https://bareburger.redro.menu/">
-                <button className="btn btn-primary">
-                    Our Menu
-                </button>
-            </a>
-
+                <a href="https://bareburger.redro.menu/">
+                    <button className="btn btn-primary">
+                        Our Menu
+                    </button>
+                </a>
             </div>
-            
-        
-            
         </div>
-        
-        
     </Carousel.Caption>
 )
 
-
-
 export const Slider = () => (
     <Styles>
-    <Carousel  >
-        <Carousel.Item>
-                    
-            <SlideImage img = {b1} alt = "First Slide"/>
-            <ImageCaption/>
-
-        </Carousel.Item>
-        
-        <Carousel.Item>
-            
-            <SlideImage img = {b3} alt = "Third Slide"/>
-            <ImageCaption/>
-           
-        </Carousel.Item>
-    </Carousel>
-    
+        <Carousel  >
+            <Carousel.Item>
+                <SlideImage img={b1} alt="First Slide" />
+                <ImageCaption />
+            </Carousel.Item>
+            <Carousel.Item>
+                <SlideImage img={b3} alt="Third Slide" />
+                <ImageCaption />
+            </Carousel.Item>
+        </Carousel>
     </Styles>
-
 )

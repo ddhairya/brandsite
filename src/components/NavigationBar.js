@@ -11,35 +11,27 @@ import insta from '../assets/images/i.png'
 import ml from '../assets/images/mail.png'
 import { Link } from 'react-router-dom'
 
-
-
 const Styles = styled.div`
     .navbar {
         background-color: #ffce02;
         padding: 1rem;
     }
-
     .navbar-brand, .navbar-nav .nav-link {
         color: black;
         font-family: Oswald;
         text-shadow: 0px 0px 0px black;        
         -webkit-text-stroke: black;
 
-    
         &:hover{
         color: white;
         }
     }
-
-    .navbar-brand img{
-       
+    .navbar-brand img{  
         height: 64px;
     }
-
     .navbar-nav {
         padding-left:40px;
     }
-
     .navbar-nav .nav-link{
         padding-right: 10px;
         font-size: 110%;
@@ -47,20 +39,15 @@ const Styles = styled.div`
 
         @media(min-width:1025px){
             font-size: 150%
-        }
-        
+        }   
     }
-
     .navbar-toggler{
         border-color: black;
-        border-width: medium;
-        
+        border-width: medium;   
     }
-
     .navbar-toggler-icon{
         background-image: url(${navlogo})
     }
-
     .socialIcon{
         padding-left:0.5rem;
         padding-right:0.5rem;
@@ -68,14 +55,9 @@ const Styles = styled.div`
             padding:1.2rem;
         }
     }
-
     .ml{
         padding-top:1rem;
-    }
-
-    
-
-`;
+    }`;
 
 const SocialMediaIcon = props => {
     const simg = props.img
@@ -85,9 +67,7 @@ const SocialMediaIcon = props => {
         <a className='socialIcon' href={shref}>
             <Image src={simg} alt={salt} height='32px' />
         </a>
-
     )
-
 }
 
 const NavLink = props => {
@@ -95,7 +75,6 @@ const NavLink = props => {
     const navTitle = props.title
     const navKey = props.eventKey
     return (
-
         <Nav.Link className='nav-link' eventKey={navKey} as={Link} to={navHref}>{navTitle}</Nav.Link>
     )
 }
@@ -103,11 +82,10 @@ const NavLink = props => {
 export const Navigationbar = () => (
     <Styles>
         <Navbar collapseOnSelect fixed='top' expand="lg">
-            <Navbar.Brand href="/brandsite/"><img src={brandlogo} alt="Bareburger" ></img></Navbar.Brand>
+            <Navbar.Brand href="/brandsite/"><img src={brandlogo} alt="Bareburger" > </img> </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-
                     <NavLink
                         href="/brandsite/order"
                         title="Order Online"
@@ -128,20 +106,13 @@ export const Navigationbar = () => (
                         title="Our Story"
                         eventKey="3"
                     />
-
                     <NavLink
                         href="/brandsite/faq"
                         title="FAQ"
                         eventKey="4"
                     />
-
-
-
-
-
                 </Nav>
                 <Nav className="ml">
-
                     <div >
                         <SocialMediaIcon
                             img={tweet}
@@ -163,11 +134,7 @@ export const Navigationbar = () => (
                             alt="mail"
                             href="mailto:bareburger_uae@bareburger.com"
                         />
-
-
-
                     </div>
-
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

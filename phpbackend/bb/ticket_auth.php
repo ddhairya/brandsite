@@ -16,10 +16,7 @@ date_default_timezone_set("Asia/Dubai");
 
 $user = $_POST['username'];
 $pwd = $_POST['password'];
-// $user = 'test';
-// $pwd = 'testpassword';
 $pwd_pep = hash_hmac("sha256", $pwd, $pep);
-
 
 $pwd_DB=mysqli_fetch_row(mysqli_query($con,"SELECT `password` from `ticket_user` WHERE `username`='".$user."'"));
 //$locMailCC2=$loc_detail[0];
@@ -30,7 +27,4 @@ if (password_verify($pwd_pep, $pwd_DB[0])) {
 else {
     echo "";
 }
-
-
-
 ?>
