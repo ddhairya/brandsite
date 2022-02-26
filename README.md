@@ -20,4 +20,4 @@ Biggest challenge was the first load time. Traffic was directly from the custome
 Once the site was live, there was a new requirement to add a ticketing system for internal usage.
 
 ## Solution
-we did achieve by optimizing the code, style and  asynchronous calls. Following the Agile methodology and deep understanding of domain we got the solution.
+We did achive quick load time through optimizing the code to maximum reusibilty, used asynchronous calls to make API calls in background and a elegant styling. Following the Agile methodology and deep understanding of domain we got the solution.
